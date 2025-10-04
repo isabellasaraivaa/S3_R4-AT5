@@ -10,7 +10,7 @@ app.use(express.json());
 //FUNÇÂO PARA LER OS LIVROS DO ARQUIVO JSON
 function lerLivros() {
    try {
-   const dados = fs.readFileSync(LIVROS_FILE, 'isUtf8');
+   const dados = fs.readFileSync(LIVROS_FILE, 'utf8');
     return JSON.parse(dados);
    }
    catch (erro) {
