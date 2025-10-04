@@ -10,7 +10,7 @@ app.use(express.json());
 //FUNÇÂO PARA LER OS LIVROS DO ARQUIVO JSON
 function lerLivros() {
    try {
-   const dados = fs.readFileSync(LIVROS_FILE, `isUtf8`);
+   const dados = fs.readFileSync(LIVROS_FILE, 'isUtf8');
     return JSON.parse(dados);
    }
    catch (erro) {
@@ -18,7 +18,7 @@ function lerLivros() {
   }
 }
  
-//FUNÇÂO PARA SALVAR LIVROS NO ARQUIVO JSON
+//FUNCAO PARA SALVAR LIVROS NO ARQUIVO JSON
 function salvarLivros(livros) {
     fs.writeFileSync(LIVROS_FILE, JSON.stringify(livros, null, 2));
 
@@ -34,7 +34,7 @@ app.post(`/livros`, (req, res) => {
 const livros = lerLivros();
 
 //verfica se o livro ja existe
-const livroExistente = livros.find(livro => titulo.toLowerCase() ===
+const livroExistente = livros.find(livro => livro.titulo.toLowerCase() ===
 titulo.toLowerCase());
   if (livroExistente) {
     return res.status(409).json({ erro: `Livro já cadastrado.`});
